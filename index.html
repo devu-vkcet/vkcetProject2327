@@ -1,0 +1,42 @@
+ <html>
+<head><title>VKCET Student Management</title></head>
+<body>
+<h1>VKCET Student Management</h1>
+
+<form action="/add" method="POST">
+Name: <input type="text" name="name" required>
+Roll Number: <input type="text" name="rollno" required>
+Course: <input type="text" name="course" required>
+Backlogs: <input type="number" name="backlogs" required>
+<button type="submit">Add Student</button>
+</form>
+
+<br>
+<a href="/delete_last"><button type="button">Delete Last Row</button></a>
+<br><br>
+
+<p>Total Students: {{ students|length }}</p>
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Roll Number</th>
+<th>Course</th>
+<th>Backlogs</th>
+<th>Action</th>
+</tr>
+{% for s in students %}
+<tr>
+<td>{{ s[0] }}</td>
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+<td>{{ s[3] }}</td>
+<td>{{ s[4] }}</td>
+<td><a href="/delete/{{ s[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
